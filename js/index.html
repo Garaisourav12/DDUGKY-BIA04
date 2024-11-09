@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .light {
-            background-color: silver;
-            color: red;
-        }
         .dark {
             background-color: black;
             color: white;
@@ -16,11 +12,15 @@
     </style>
 </head>
 <body>
-    <div id="div1" class="class-1 class-2 light">This is a div</div>
-    <button id="mode-swicher">Mode switch</button>
+    <div id="outer-div" class="outer div">
+        <div id="box">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore aliquid sint beatae itaque aperiam deserunt, quasi similique accusantium recusandae dolorem quod nam magni distinctio quas. Mollitia sed eos ratione corrupti!</div>
+
+        <button id="mode-switcher" class="mode-switcher">Mode switch</button>
+    </div>
 
     <!-- <script src="index.js"></script> -->
     <!-- <script src="constructor.js"></script> -->
-    <script src="dom.js"></script>
+    <!-- <script src="dom.js"></script> -->
+    <script src="ligt&dark.js"></script>
 </body>
 </html>
