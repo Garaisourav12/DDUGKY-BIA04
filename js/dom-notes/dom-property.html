@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access and Set Properties</title>
+</head>
+<body>
+    <h1 id="main-title" class="title">Title</h1>
+    <input type="text" id="text-input" value="Default Text">
+    <img id="image" src="https://via.placeholder.com/150" alt="Placeholder Image">
+    <a id="link" href="https://example.com" target="_blank">Visit Example</a>
+    <button id="btn">Click Me</button>
+    <button id="toggle-btn">Toggle Disable</button>
+
+    <script>
+        // Accessing and setting text content
+        const title = document.getElementById('main-title');
+        console.log(title.textContent);  // Outputs: "Title"
+        title.textContent = "Updated Title";  // Sets new text content
+        // You can also use: title.getAttribute('id') and title.setAttribute('id', 'new-title')
+        // Similar you can use it for innerText and innerHTMl also
+
+        // Accessing and setting value for <input>
+        const textInput = document.getElementById('text-input');
+        console.log(textInput.value);  // Outputs: "Default Text"
+        textInput.value = "New Text";  // Sets new value in the input
+        // You can also use: textInput.getAttribute('value') and textInput.setAttribute('value', 'Another Text')
+
+        // Accessing and setting src and alt for <img>
+        const image = document.getElementById('image');
+        console.log(image.src);  // Outputs the absolute URL of the image
+        image.src = 'https://via.placeholder.com/300';  // Updates the image source
+        console.log(image.alt);  // Outputs: "Placeholder Image"
+        image.alt = "Updated Placeholder";  // Updates the alt text
+        // Alternative: image.getAttribute('src') and image.setAttribute('src', 'new-image-url')
+
+        // Accessing and setting href and target for <a>
+        const link = document.getElementById('link');
+        console.log(link.href);  // Outputs the absolute URL of the link
+        link.href = "https://openai.com";  // Sets a new href
+        link.target = "_self";  // Changes the target attribute
+        // Alternative: link.getAttribute('href') and link.setAttribute('href', 'https://openai.com')
+
+        // Accessing and setting button text content and disabling
+        const button = document.getElementById('btn');
+        console.log(button.textContent);  // Outputs: "Click Me"
+        button.textContent = "Button Clicked";  // Updates button text
+        button.disabled = true;  // Sets the button as disabled
+        // You can also toggle this attribute: button.removeAttribute('disabled')
+
+        // Toggling boolean attributes, it is used to toggle value of boolean attribute
+        // like disable, checked
+        const toggleButton = document.getElementById('toggle-btn');
+        toggleButton.addEventListener('click', () => {
+            // Toggle disabled attribute using toggleAttribute
+            button.toggleAttribute('disabled');
+            console.log(button.disabled ? "Button is now disabled" : "Button is now enabled");
+        });
+
+        // Using classList to manipulate classes
+        title.classList.add('highlight');  // Adds 'highlight' class to <h1>
+        console.log(title.classList.contains('highlight'));  // Checks if 'highlight' class is present (true)
+        title.classList.remove('title');  // Removes 'title' class
+        title.classList.toggle('hidden');  // Toggles 'hidden' class (adds if absent, removes if present)
+
+        // Example of accessing custom data attribute
+        button.dataset.info = "extra data";  // Adds a data-info attribute
+        console.log(button.dataset.info);  // Outputs: "extra data"
+        // You can also use: button.getAttribute('data-info') and button.setAttribute('data-info', 'new data')
+    </script>
+</body>
+</html>

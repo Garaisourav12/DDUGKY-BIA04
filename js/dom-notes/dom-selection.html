@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Selection Methods</title>
+</head>
+<body>
+    <h1 id="main-title">Hello, World!</h1>
+    <p class="intro">This is an introduction paragraph.</p>
+    <p class="content">This is the main content.</p>
+    <ul id="list">
+        <li class="item">Item 1</li>
+        <li class="item">Item 2</li>
+        <li class="item">Item 3</li>
+    </ul>
+
+    <script>
+        // 1. Selecting by ID (Return the matching element only one)
+        const mainTitle = document.getElementById('main-title');
+        console.log(mainTitle);  // Outputs: <h1 id="main-title">Hello, World!</h1>
+
+
+
+        // 2. Selecting by Class Name (Return array of all matches)
+        // If no match found return empty array
+        const introParagraph = document.getElementsByClassName('intro');
+        console.log(introParagraph[0]);  // Outputs: <p class="intro">This is an introduction paragraph.</p>
+
+
+
+        // 3. Selecting by Tag Name (Return array of all matches)
+        // If no match found return empty array
+        const paragraphs = document.getElementsByTagName('p');
+        console.log(paragraphs[1]);  // Outputs: <p class="content">This is the main content.</p>
+
+
+
+        // 4. Selecting with querySelector (first match, return only one element)
+        const firstItem = document.querySelector('.item');
+        console.log(firstItem);  // Outputs: <li class="item">Item 1</li>
+
+
+
+        // 5. Selecting with querySelectorAll (return array of all match)
+        // If no match found return an empty array
+        const allItems = document.querySelectorAll('.item');
+        allItems.forEach(item => console.log(item));  
+        // Outputs each <li class="item"> element
+
+
+
+        // 6. Selecting nested elements (return array of all match)
+        // If no match found return an empty array
+        const listItems = document.querySelectorAll('#list .item');
+        listItems.forEach(item => console.log(item));  
+        // Outputs each <li class="item"> element within #list
+
+        // ***Any css selecting pattern you can use to select using querySelector and querySelectorAll
+
+        // 7. Selecting parent, child, and sibling elements
+        const list = document.getElementById('list');
+
+        // Parent Node
+        console.log(list.parentNode);  // Outputs the <body> element
+
+        // First and Last Child
+        console.log(list.firstElementChild);  // Outputs the first <li> item
+        console.log(list.lastElementChild);   // Outputs the last <li> item
+
+        // Sibling Nodes (next child element)
+        const secondItem = list.firstElementChild.nextElementSibling;
+        console.log(secondItem);  // Outputs: <li class="item">Item 2</li>
+    </script>
+</body>
+</html>

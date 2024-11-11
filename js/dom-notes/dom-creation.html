@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Creation, Manipulation, and Removal</title>
+</head>
+<body>
+    <h1>DOM Manipulation Example</h1>
+
+    <!-- Container for new elements -->
+    <div id="container">
+        <p>Initial Paragraph inside container.</p>
+    </div>
+
+    <!-- Button to trigger element removal -->
+    <button id="removeButton">Remove Dynamic Elements</button>
+
+    <script>
+        // 1. Create a new div element
+        const newElement = document.createElement('div');
+        newElement.textContent = "This is a dynamically created div.";
+        newElement.className = "new-div"; 
+        // Instade of using class list to directly set use class name and use classList to add, remove and toggle
+        newElement.id = "dynamic-div";
+        newElement.setAttribute('data-info', 'created by JS');
+
+        // 2. Append the new element to the body
+        document.body.appendChild(newElement);
+
+        // 3. Add some properties to the new element
+        newElement.style.color = "blue";  // Set text color to blue
+        newElement.setAttribute('title', 'This is a tooltip');  // Set a title attribute
+
+        // 4. Create and append another paragraph to container
+        const container = document.getElementById('container');
+        const newParagraph = document.createElement('p');
+        newParagraph.textContent = "This is another dynamically created paragraph inside container.";
+        container.appendChild(newParagraph);
+
+        // 5. Add a button to toggle 'disabled' property
+        const button = document.createElement('button');
+        button.textContent = "Click Me";
+        document.body.appendChild(button);
+        button.disabled = true;  // Disable the button initially
+
+        // Toggle disabled attribute when the button is clicked
+        button.addEventListener('click', function () {
+            button.disabled = !button.disabled;  // Toggle the disabled state
+            console.log('Button disabled state toggled:', button.disabled);
+        });
+
+        // 6. Remove elements when "Remove Dynamic Elements" button is clicked
+        document.getElementById('removeButton').addEventListener('click', function () {
+            // Remove the dynamically created div
+            if (newElement) {
+                newElement.remove();  // Removes the dynamically created div from the DOM
+                console.log('Dynamically created div removed.');
+            }
+
+            // Remove the newly created paragraph inside container
+            const paragraphToRemove = container.querySelector('p');
+            if (paragraphToRemove) {
+                container.removeChild(paragraphToRemove);  // Removes the first paragraph inside container
+                console.log('First paragraph inside container removed.');
+            }
+        });
+    </script>
+</body>
+</html>
