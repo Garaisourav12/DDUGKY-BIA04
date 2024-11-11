@@ -5,7 +5,9 @@ const todoInput = document.getElementById("todo-input");
 todoForm.addEventListener("submit", createNewTodo);
 
 function createNewTodo(event) {
-	event.preventDefault();
+	event.preventDefault(); // Preventing the form submitting behaviour
+
+	if (todoInput.value.trim() === "") return; // Ignoring empty text
 
 	// Create todo li
 	const newTodo = document.createElement("li");
@@ -14,7 +16,7 @@ function createNewTodo(event) {
 
 	// Create span to display todo text
 	const todoText = document.createElement("span");
-	todoText.innerText = todoInput.value;
+	todoText.innerText = todoInput.value.trim();
 	newTodo.appendChild(todoText);
 
 	// Create delete button
@@ -53,7 +55,9 @@ function deleteTodo(event) {
 function editTodo(event) {
 	// Open popup to take new todo task neme to update existing todo
 	const newTodoText = prompt("Enter new todo task");
-	event.target.parentNode.querySelector("span").innerText = newTodoText;
+	if (newTodoText.trim() === "") return; // Ignore empty text
+	event.target.parentNode.querySelector("span").innerText =
+		newTodoText.trim();
 }
 
 function completeTodo(event) {
