@@ -56,8 +56,7 @@ function editTodo(event) {
 	// Open popup to take new todo task neme to update existing todo
 	const newTodoText = prompt("Enter new todo task");
 	if (newTodoText.trim() === "") return; // Ignore empty text
-	event.target.parentNode.querySelector("span").innerText =
-		newTodoText.trim();
+	event.target.parentNode.firstElementChild.innerText = newTodoText.trim();
 }
 
 function completeTodo(event) {
