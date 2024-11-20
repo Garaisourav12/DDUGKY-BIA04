@@ -13,34 +13,64 @@ let d = 1;
 const loading = document.getElementById("loading");
 const dataList = document.getElementById("dataList");
 
-loading.style.display = "block";
 console.log(fetch("https://jsonplaceholder.typicode.com/posts"));
 
-fetch("https://jsonplaceholder.typicode.com/posts")
-	.then((res) => {
-		// console.log(res.json());
-		// console.log(res.json());
+function fetchApi() {
+	loading.style.display = "flex";
+	fetch("https://jsonplaceholder.typicode.com/posts")
+		.then((res) => {
+			// console.log(res.json());
+			// console.log(res.json());
 
-		return res.json();
-	})
-	.then((data) => {
+			return res.json();
+		})
+		.then((data) => {
+			data.forEach((item) => {
+				const li = document.createElement("li");
+				li.innerText = item.title;
+				dataList.appendChild(li);
+				return item.title;
+			});
+			console.log(data);
+
+			// console.log(titleArray);
+		})
+		.catch((e) => {
+			console.log(e);
+		})
+		.finally(() => {
+			setTimeout(() => {
+				loading.style.display = "none";
+			}, 2000);
+		});
+}
+
+async function fetchApi2() {
+	try {
+		loading.style.display = "flex";
+		const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+		const data = await res.json();
+
 		data.forEach((item) => {
 			const li = document.createElement("li");
 			li.innerText = item.title;
 			dataList.appendChild(li);
 			return item.title;
 		});
-		console.log(data);
+	} catch (error) {
+		console.log(error);
+	} finally {
+		setTimeout(() => {
+			loading.style.display = "none";
+		}, 2000);
+	}
 
-		// console.log(titleArray);
-	})
-	.catch((e) => {
-		console.log(e);
-	})
-	.finally(() => {
-		loading.style.display = "none";
-	});
+	return 2;
+}
 
+// fetchApi();
+const p = fetchApi2();
+console.log(p);
 console.log(d);
 
 let a = 0;

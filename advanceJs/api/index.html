@@ -4,9 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #loading {
+            display: none;
+            height: 100vh;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* border: 1px solid red; */
+            background-color: white;
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spinner {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            /* border-top: 4px solid skyblue; */
+            /* background-color: black; */
+            border: 4px solid transparent;
+            border-top-color: skyblue;
+            animation: spin 1s linear 0s infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+    </style>
 </head>
 <body>
-    <div id="loading" style="display: none;">Loading...</div>
+    <div id="loading">
+        <div class="spinner"></div>
+    </div>
     <div id="dataList"></div>
     <script src="script.js"></script>
 </body>
